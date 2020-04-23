@@ -16,6 +16,7 @@ module Api
              is_array: true
         get do
           # your code goes here
+          ::Models::Reservations.all.map { |reservation| reservation.values }
         end
 
         desc 'get specific reservation'
@@ -24,6 +25,7 @@ module Api
         end
         get ':id' do
           # your code goes here
+          Models::Reservations[params[:id]].values
         end
       end
     end

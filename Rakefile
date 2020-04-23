@@ -40,9 +40,9 @@ namespace :db do
     $stdout.puts version
   end
 
-  desc 'Run all migrations in db/migrations'
+  desc 'Run all migrations in db/migrate'
   task migrate: :connect do
-    Sequel::Migrator.apply(DB, 'db/migrations')
+    Sequel::Migrator.apply(DB, 'db/migrate')
     Rake::Task['db:version'].execute
   end
 
@@ -50,14 +50,14 @@ namespace :db do
   task :rollback, [:target] => :connect do |t, args|
     args.with_defaults(:target => 0)
 
-    Sequel::Migrator.run(DB, 'db/migrations', :target => args[:target].to_i)
+    Sequel::Migrator.run(DB, 'db/migrate', :target => args[:target].to_i)
     Rake::Task['db:version'].execute
   end
 
   desc "Perform migration reset (full rollback and migration)"
   task reset: :connect do
-    Sequel::Migrator.run(DB, 'db/migrations', target: 0)
-    Sequel::Migrator.run(DB, 'db/migrations')
+    Sequel::Migrator.run(DB, 'db/migrate', target: 0)
+    Sequel::Migrator.run(DB, 'db/migrate')
     Rake::Task['db:version'].execute
   end
 

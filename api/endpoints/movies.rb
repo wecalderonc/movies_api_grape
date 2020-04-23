@@ -3,6 +3,7 @@
 module Api
   module Endpoints
     class Movies < Grape::API
+      include Models
       namespace :movies do
         desc 'create movie'
         params do
@@ -16,6 +17,7 @@ module Api
              is_array: true
         get do
           # your code goes here
+          ::Models::Movies.all.map { |movie| movie.values }
         end
 
         desc 'get specific movie'
@@ -24,6 +26,7 @@ module Api
         end
         get ':id' do
           # your code goes here
+          Models::Movies[params[:id]].values
         end
       end
     end

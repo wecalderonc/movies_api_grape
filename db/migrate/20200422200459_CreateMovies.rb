@@ -5,6 +5,10 @@ Sequel.migration do
 
       DateTime :created_at
       DateTime :updated_at
+      String :name
+      String :description
+      String :url
+      String :days
     end
   end
 end
