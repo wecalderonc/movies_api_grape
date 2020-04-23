@@ -23,9 +23,10 @@ group :development, :test do
   gem 'rake'
   gem 'rspec'
   gem 'rubocop', '~> 0.77'
+  gem 'sqlite3'
 end
 
 
 # DB stack
 gem 'sequel'
-gem 'sqlite3'
+gem 'pg'

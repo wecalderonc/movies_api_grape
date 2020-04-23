@@ -16,7 +16,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite
-  database: db/production.sqlite3
-  pool: 5
+  adapter: postgresql
+  encoding: unicode
   timeout: 5000
+  user: postgres
+  database: grape_movies_production
