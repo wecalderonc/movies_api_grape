@@ -6,6 +6,7 @@ Sequel.migration do
       DateTime :created_at
       DateTime :updated_at
       DateTime :date
+      String :name_client
       foreign_key :movie_id, :movies
     end
   end

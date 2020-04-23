@@ -6,16 +6,22 @@ module Api
       namespace :reservations do
         desc 'create reservation'
         params do
-          # TODO: specify the parameters
+          requires :movie_name, type: String
+          requires :date, type: String
+          requires :name_client, type: String
         end
         post do
-          # your code goes here
+          binding.pry
+          if Models::Movies[name: params[:movie_name]]
+            reservation = Models::Reservations.create({date: params[:date],name_client: params[:name_client]})
+            return reservation.values
+          end
+
         end
 
         desc 'get all of reservations',
              is_array: true
         get do
-          # your code goes here
           ::Models::Reservations.all.map { |reservation| reservation.values }
         end
 
@@ -24,7 +30,6 @@ module Api
           requires :id
         end
         get ':id' do
-          # your code goes here
           Models::Reservations[params[:id]].values
         end
       end

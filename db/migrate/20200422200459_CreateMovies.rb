@@ -8,7 +8,8 @@ Sequel.migration do
       String :name
       String :description
       String :url
-      String :days
+      Date :first_date
+      Date :last_date
     end
   end
 end

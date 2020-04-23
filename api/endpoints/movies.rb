@@ -7,16 +7,20 @@ module Api
       namespace :movies do
         desc 'create movie'
         params do
-          # TODO: specify the parameters
+          requires :name, type: String
+          requires :description, type: String
+          requires :url, type: String
+          requires :first_date, type: Date
+          requires :last_date, type: Date
         end
         post do
-          # your code goes here
+          movie = Models::Movies.create({name: params[:name],description: params[:description],first_date: params[:first_date],last_date: params[:last_date]})
+          movie.values
         end
 
         desc 'get all of movies',
              is_array: true
         get do
-          # your code goes here
           ::Models::Movies.all.map { |movie| movie.values }
         end
 
@@ -25,7 +29,6 @@ module Api
           requires :id
         end
         get ':id' do
-          # your code goes here
           Models::Movies[params[:id]].values
         end
       end
