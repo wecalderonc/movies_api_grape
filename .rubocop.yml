@@ -1,0 +1,22 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - '**/tmp/**/*'
+    - '**/script/**/*'
+    - Rakefile
+    - Gemfile
+  UseCache: true
+  TargetRubyVersion: 2.7
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/AsciiComments:
+  Enabled: false
