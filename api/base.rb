@@ -6,6 +6,8 @@ module Api
     format :json
 
     mount Endpoints::Root
+    mount Endpoints::Movies
+    mount Endpoints::Reservations
 
     add_swagger_documentation format: :json,
                               info: {
