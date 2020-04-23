@@ -86,6 +86,7 @@ GEM
     parallel (1.19.1)
     parser (2.7.1.1)
       ast (~> 2.4.0)
+    pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -144,6 +145,7 @@ DEPENDENCIES
   grape-starter
   grape-swagger
   grape-swagger-entity
+  pg
   pry
   rack
   rack-cors
