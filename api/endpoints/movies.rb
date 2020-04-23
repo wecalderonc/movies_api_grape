@@ -14,22 +14,35 @@ module Api
           requires :last_date, type: Date
         end
         post do
-          movie = Models::Movies.create({name: params[:name],description: params[:description],first_date: params[:first_date],last_date: params[:last_date]})
-          movie.values
+          movie = MoviesCreateService.new.call(params)
+
+          if movie.success?
+            movie.success.values
+          else
+            Api::Entities::ApiError.new({ code: movie.failure[:code], message: movie.failure[:message] })
+          end
         end
 
-        desc 'get all of movies',
-             is_array: true
+        desc 'get all of movies in a day of the week (Insert name of the day)', is_array: true
+        params do
+          requires :week_day, type: String
+        end
         get do
-          ::Models::Movies.all.map { |movie| movie.values }
+          movies = MoviesGetService.new.call(params)
+
+          if movies.success?
+            present movies.success.map { |movie| movie.values }
+          else
+            Api::Entities::ApiError.new({ code: movies.failure[:code], message: movies.failure[:message] })
+          end
         end
 
         desc 'get specific movie'
         params do
-          requires :id
+          requires :id, type: Integer
         end
         get ':id' do
-          Models::Movies[params[:id]].values
+          present Models::Movies[params[:id]].values
         end
       end
     end

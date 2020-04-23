@@ -8,6 +8,8 @@ gem 'thin'
 gem 'rack'
 gem 'rack-cors'
 
+gem 'dry-transaction', '~> 0.13'
+
 # API stuff
 gem 'grape'
 gem 'grape-entity'

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'entities/api_error'
+
 module Api
   module Endpoints
     class Reservations < Grape::API
@@ -11,18 +13,29 @@ module Api
           requires :name_client, type: String
         end
         post do
-          binding.pry
-          if Models::Movies[name: params[:movie_name]]
-            reservation = Models::Reservations.create({date: params[:date],name_client: params[:name_client]})
-            return reservation.values
+          reservation = ReservationsService.new.call(params)
+
+          if reservation.success?
+            present reservation.success
+          else
+            Api::Entities::ApiError.new({ code: reservation.failure[:code], message: reservation.failure[:message] })
           end
 
         end
 
-        desc 'get all of reservations',
-             is_array: true
+        desc 'get all of reservations in a date range', is_array: true
+        params do
+          requires :first_date, type: Date
+          requires :last_date, type: Date
+        end
         get do
-          ::Models::Reservations.all.map { |reservation| reservation.values }
+          reservations = ReservationsGetService.new.call(params)
+
+          if reservations.success?
+            present reservations.success.map { |reservation| reservation.values }
+          else
+            Api::Entities::ApiError.new({ code: reservations.failure[:code], message: reservations.failure[:message] })
+          end
         end
 
         desc 'get specific reservation'

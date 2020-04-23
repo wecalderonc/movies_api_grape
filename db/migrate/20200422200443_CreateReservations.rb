@@ -3,9 +3,7 @@ Sequel.migration do
     create_table :reservations do
       primary_key :id
 
-      DateTime :created_at
-      DateTime :updated_at
-      DateTime :date
+      Date :date
       String :name_client
       foreign_key :movie_id, :movies
     end
