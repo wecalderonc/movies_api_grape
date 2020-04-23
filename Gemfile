@@ -21,7 +21,6 @@ group :development, :test do
   gem 'grape-starter'
   gem 'pry'
   gem 'rack-test'
-  gem 'rake'
   gem 'rspec'
   gem 'rubocop', '~> 0.77'
   gem 'sqlite3'
@@ -31,3 +30,4 @@ end
 # DB stack
 gem 'sequel'
 gem 'pg'
+gem 'rake'
