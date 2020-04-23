@@ -19,4 +19,5 @@ production:
   adapter: postgresql
   encoding: unicode
   timeout: 5000
+  user: postgres
   database: grape_movies_production

@@ -3,7 +3,8 @@
 require 'yaml'
 
 # load Sequel Configuration
-settings = YAML.load_file('config/database.yml')
+# settings = YAML.load_file('config/database.yml')
+settings = YAML.load(ERB.new(File.read(File.join("config","database.yml"))).result)
 DB = Sequel.connect(settings[ENV['RACK_ENV']])
 
 env = ENV['RACK_ENV'] || 'development'

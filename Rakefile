@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rake'
+require 'erb'
 
 require File.expand_path('config/application', __dir__)
 
