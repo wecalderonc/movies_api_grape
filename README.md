@@ -1,53 +1,65 @@
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 -->
-
-- [adept it to your needs](#adept-it-to-your-needs)
-  - [Your awesome API](#your-awesome-api)
-  - [Usage](#usage)
-  - [Rake Tasks](#rake-tasks)
-  - [Docker](#docker)
-  - [Contributing](#contributing)
-  - [License](#license)
-
-<!-- /TOC -->
-
-# adept it to your needs
-
 ## MOVIES API WITH GRAPE
 
-A [Grape](http://github.com/ruby-grape/grape) API mounted on [Rack](https://github.com/rack/rack), starting point for API development with Grape. It also includes [grape-swagger](http://github.com/ruby-grape/grape-swagger) for documentation generating.
+A basic API created with GRAPE/RACK/SEQUEL for Cinema Booking Systems.
 
+Services built with DRY-TRANSACTION gem.
 
-## Usage
+#### `Heroku Link to testing in production`
 
-All following commands can and should be adapted/replaced to your needs.
-
-- [Setup](#setup)
-- [Run](#run)
+https://movies-grape-will.herokuapp.com
 
 #### `Setup`
 
 ```
-$ ./script/setup
+git clone https://github.com/wecalderonc/movies_api_grape.git
+cd movies_api_grape
+./script/setup
 ```
 
 #### `Run`
 
 ```
-$ ./script/server *port (default: 9292)
+./script/server *port (default: 9292)
 ```
 and go to: [http://localhost:port/doc](http://localhost:9292/doc)
 to access the OAPI documentation.
 
+#### `ENDPOINTS`
 
-## Rake Tasks
+url local: localhost:9292
+url production: https://movies-grape-will.herokuapp.com
 
-- [List Routes](#list-routes)
-- [OpenApi Documentation and Validation](#openapi-documentation-and-validation)
+###### Create Movie:
 
-#### List Routes
-
-```
-rake routes
-```
+method: post
+url: /v1/movies
+params: name, description, url, first_date, last_date
 
 
+Example: http://localhost:9292/v1/movies?name=killbill&description=description kill bill&url=killbillcom&first_date=1/1/2020&last_date=30/3/2020
+
+###### List Movies in a specific day of the week
+
+method: get
+url: /v1/movies
+params: week_day (the name of the day)
+
+Example: https://movies-grape-will.herokuapp.com/v1/movies?week_day=tuesday
+
+###### Create Reservation
+
+method: post
+url: /v1/reservations
+params: movie_name, name_client, date
+
+Example: localhost:9292/v1/reservations?movie_name=killbill&name_client=Carolina&date=3/2/2020
+
+Note: After 10 reservations in the same movie and date, the api will response with FULL message for the event.
+
+###### List Reservations
+
+method: get
+url: /v1/reservations
+params: first_date, last_date
+
+Example: localhost:9292/v1/reservations?first_date=1/3/2020&last_date=4/4/2020
