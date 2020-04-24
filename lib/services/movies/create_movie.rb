@@ -20,7 +20,7 @@ class MoviesCreateService
   end
 
   def create(input)
-    movie = Models::Movies.create({name: input[:name],description: input[:description],first_date: input[:first_date],last_date: input[:last_date]})
+    movie = Models::Movies.create({name: input[:name],description: input[:description], url: input[:url], first_date: input[:first_date],last_date: input[:last_date]})
 
     if movie
       Success movie.values

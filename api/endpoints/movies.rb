@@ -17,7 +17,7 @@ module Api
           movie = MoviesCreateService.new.call(params)
 
           if movie.success?
-            movie.success.values
+            movie.success
           else
             Api::Entities::ApiError.new({ code: movie.failure[:code], message: movie.failure[:message] })
           end
