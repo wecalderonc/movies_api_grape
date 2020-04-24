@@ -1,1 +1,1 @@
-web: bundle exec thin start -p 9292 -e production --tag API-movies_api_grape -d --threaded
+web: bundle exec thin start -R config.ru -p $PORT -e $RACK_ENV --tag API-movies_api_grape
