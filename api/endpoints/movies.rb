@@ -37,7 +37,7 @@ module Api
           end
         end
 
-        desc 'get specific movie'
+        desc 'Get specific movie by ID'
         params do
           requires :id, type: Integer
         end

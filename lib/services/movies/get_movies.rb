@@ -13,7 +13,7 @@ class MoviesGetService
       days.include?(input[:week_day].capitalize)
     end
 
-    if movies
+    if movies.any?
       Success movies
     else
       response = { message: "No movie for that day of the week", code: 404}
