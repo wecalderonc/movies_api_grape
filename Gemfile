@@ -16,9 +16,9 @@ gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger'
 gem 'grape-swagger-entity'
+gem 'grape-starter'
 
 group :development, :test do
-  gem 'grape-starter'
   gem 'pry'
   gem 'rack-test'
   gem 'rspec'
