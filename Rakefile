@@ -43,6 +43,7 @@ namespace :db do
 
   desc 'Run all migrations in db/migrate'
   task migrate: :connect do
+    binding.pry
     Sequel::Migrator.apply(DB, 'db/migrate')
     Rake::Task['db:version'].execute
   end
