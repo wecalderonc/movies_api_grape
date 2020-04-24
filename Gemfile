@@ -20,9 +20,9 @@ gem 'grape-starter'
 gem 'rack-test'
 gem 'rspec'
 gem 'rubocop', '~> 0.77'
+gem 'pry'
 
 group :development, :test do
-  gem 'pry'
   gem 'sqlite3'
 end
 
