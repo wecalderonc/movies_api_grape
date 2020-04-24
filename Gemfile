@@ -18,11 +18,11 @@ gem 'grape-swagger'
 gem 'grape-swagger-entity'
 gem 'grape-starter'
 gem 'rack-test'
+gem 'rspec'
+gem 'rubocop', '~> 0.77'
 
 group :development, :test do
   gem 'pry'
-  gem 'rspec'
-  gem 'rubocop', '~> 0.77'
   gem 'sqlite3'
 end
 
