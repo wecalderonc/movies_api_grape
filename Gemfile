@@ -17,10 +17,10 @@ gem 'grape-entity'
 gem 'grape-swagger'
 gem 'grape-swagger-entity'
 gem 'grape-starter'
+gem 'rack-test'
 
 group :development, :test do
   gem 'pry'
-  gem 'rack-test'
   gem 'rspec'
   gem 'rubocop', '~> 0.77'
   gem 'sqlite3'
